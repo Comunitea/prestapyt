@@ -404,7 +404,7 @@ class PrestaShopWebService(object):
         """
         return self._execute(url, 'HEAD').headers
 
-    def edit(self, resource, content):
+    def edit(self, resource, resource_id, content):
         """
         Edit (PUT) a resource.
 
@@ -413,7 +413,7 @@ class PrestaShopWebService(object):
         @param content: modified XML as string of the resource.
         @return: an ElementTree of the Webservice's response
         """
-        full_url = "%s%s" % (self._api_url, resource)
+        full_url = "%s%s/%s" % (self._api_url, resource, resource_id)
         return self.edit_with_url(full_url, content)
 
     def edit_with_url(self, url, content):
